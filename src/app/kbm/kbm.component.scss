@@ -1,0 +1,28 @@
+@import 'src/environment.scss';
+
+.kbm-background {
+  display: flex;
+  justify-content: center;
+  background-color: $color-kbm-background;
+  padding: 20px;
+  align-items: center;
+  flex-direction: column;
+}
+
+table {
+  border-collapse: collapse;
+}
+
+th {
+  background-color: $color-table-th-background;
+  padding: 16px 10px;
+  color: $color-table-th-text;
+  border: 1px solid $color-table-border;
+}
+
+td {
+  background-color: $color-table-td-background;
+  border: 1px solid $color-table-border;
+  color: $color-table-text;
+  padding: 6px 6px;
+}

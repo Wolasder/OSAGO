@@ -1,0 +1,27 @@
+@import 'src/environment.scss';
+
+form {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin: 10px 5px;
+}
+input {
+  width: 210px;
+  padding: 13px 15px 11px 15px;
+  font-family: $font-family-noto;
+  font-size: 14px;
+  line-height: 1.57143;
+  font-weight: 400;
+  font-style: normal;
+  color: $color-input;
+  border: 1px solid $color-input-border;
+  border-radius: 10px;
+  background: $color-input-background;
+  outline: none;
+}
+
+input:focus {
+  border-color: $color-input-border-focus;
+  transition: all .3s ease-in-out;
+}

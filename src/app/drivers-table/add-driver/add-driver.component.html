@@ -1,0 +1,59 @@
+<div class="add-driver">
+  <div class="add-driver-form">
+    <form>
+      <div class="field">
+        <app-input
+          [type]="'text'"
+          [label]="'Ф.И.О.'"
+          [placeholder]="'Ф.И.О.'"
+          [inputName]="'name'"
+          [myInputValue]="driver.fio"
+          (onChange)="driver.fio = $event"
+        ></app-input>
+      </div>
+      <div class="field">
+        <app-input
+          [type]="'number'"
+          [label]="'Возраст водителя'"
+          [placeholder]="'Возраст'"
+          [myInputValue]="driver.age"
+          (onChange)="driver.age = $event"
+        ></app-input>
+      </div>
+      <div class="field">
+        <app-input
+          [type]="'number'"
+          [label]="'Стаж вождения'"
+          [placeholder]="'Стаж'"
+          [myInputValue]="driver.stage"
+          (onChange)="driver.stage = $event"
+        ></app-input>
+      </div>
+      <div class="select">
+        <p>Сколько лет не было аварий?</p>
+        <select
+          name="kbm"
+          [(ngModel)]="driver.kbm"
+        >
+          <option
+            *ngFor="let item of kbm"
+            [value]="item.value">{{item.description}}</option>
+        </select>
+      </div>
+      <div class="add-driver-button">
+        <app-button
+          [text]="textBtnAdd"
+          (click)="clickButtonAdd()"
+        ></app-button>
+        <app-button
+          [text]="'Отменить'"
+          (click)="clickButtonCancel()"
+        ></app-button>
+      </div>
+    </form>
+  </div>
+</div>
+
+
+
+

@@ -1,0 +1,112 @@
+<div class="car-info">
+  <h2>Данные об автомобиле</h2>
+  <div class="car-info-form">
+    <form>
+      <div class="select">
+        <p>Город регистрации</p>
+        <select
+          name="city"
+          [(ngModel)]="carInfo.city.city"
+          (ngModelChange) = "setKbm($event)"
+        >
+          <option
+            *ngFor="let item of city"
+            [value]="item.city"
+            >{{item.city}}</option>
+        </select>
+      </div>
+      <div>
+        <app-input
+          [type]="'text'"
+          [label]="'Марка'"
+          [placeholder]="'Марка'"
+          [myInputValue]="carInfo.brand"
+          (onChange)="carInfo.brand = $event; carInfoToKbm()"
+        ></app-input>
+      </div>
+      <div class="car-info-number">
+        <app-input
+          [label]="'Гос номер'"
+          [type]="'text'"
+          [width]="'66px'"
+          [marginLeft]="'130px'"
+          [placeholder]="'A 111 AA'"
+          [myInputValue]="carInfo.gosNumber.number"
+          (onChange)="carInfo.gosNumber.number = $event; carInfoToKbm()"
+        ></app-input>
+        <app-input
+          [type]="'text'"
+          [width]="'30px'"
+          [placeholder]="'31'"
+          [myInputValue]="carInfo.gosNumber.region"
+          (onChange)="carInfo.gosNumber.region = $event; carInfoToKbm()"
+        ></app-input>
+        <app-input
+          [type]="'text'"
+          [width]="'30px'"
+          [placeholder]="'RUS'"
+          [myInputValue]="carInfo.gosNumber.country"
+          (onChange)="carInfo.gosNumber.country = $event; carInfoToKbm()"
+        ></app-input>
+      </div>
+      <div>
+        <app-input
+          [type]="'text'"
+          [label]="'Vin'"
+          [placeholder]="'vin'"
+          [myInputValue] = "carInfo.vin"
+          (onChange)="carInfo.vin = $event; carInfoToKbm()"
+        ></app-input>
+      </div>
+    </form>
+  </div>
+</div>
+
+
+
+
+
+
+<!--<div>-->
+<!--  <h3>Данные об автомобиле</h3>-->
+<!--  <div class="car-info-form">-->
+<!--    <form>-->
+<!--      <div>-->
+<!--        <app-input-->
+<!--          type="date"-->
+<!--          label="Год регистрации"-->
+<!--        ></app-input>-->
+<!--      </div>-->
+<!--      <div>-->
+<!--        <app-input-->
+<!--          type="text"-->
+<!--          label="Марка"-->
+<!--        ></app-input>-->
+<!--      </div>-->
+<!--      <div class="car-info-number">-->
+<!--        <app-input-->
+<!--          label="Гос номер"-->
+<!--          type="text"-->
+<!--          width="width: 80px;"-->
+<!--          placeholder="A 111 AA"-->
+<!--        ></app-input>-->
+<!--        <app-input-->
+<!--          type="text"-->
+<!--          width="width: 80px;"-->
+<!--          placeholder="31"-->
+<!--        ></app-input>-->
+<!--        <app-input-->
+<!--          type="text"-->
+<!--          width="width: 80px;"-->
+<!--          placeholder="RUS"-->
+<!--        ></app-input>-->
+<!--      </div>-->
+<!--      <div>-->
+<!--        <app-input-->
+<!--          type="text"-->
+<!--          label="vin"-->
+<!--        ></app-input>-->
+<!--      </div>-->
+<!--    </form>-->
+<!--  </div>-->
+<!--</div>-->

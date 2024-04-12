@@ -1,0 +1,58 @@
+<div class="kbm-background">
+  <h2>Расчет стоимости ОСАГО</h2>
+
+  <app-button
+    [text]="'Рассчитать'"
+    (click)="finalPrice()"
+  ></app-button>
+
+  <table
+    *ngIf="!hiddenTable"
+  >
+    <tr>
+      <th style="width: 300px">
+        Город регистрации
+      </th>
+      <th style="width: 70px">
+        Марка
+      </th>
+      <th style="width: 70px">
+        Гос номер
+      </th>
+      <th style="width: 70px">
+        Vin
+      </th>
+    </tr>
+    <tr>
+      <td>{{combineInfo[0].carInfo.city.city}}</td>
+      <td>{{combineInfo[0].carInfo.brand}}</td>
+      <td>{{combineInfo[0].carInfo.gosNumber.view}}</td>
+      <td>{{combineInfo[0].carInfo.vin}}</td>
+    </tr>
+
+    <tr>
+      <th style="width: 300px">
+        Ф.И.О.
+      </th>
+      <th style="width: 70px">
+        Возраст водителя
+      </th>
+      <th style="width: 70px">
+        Стаж вождения
+      </th>
+      <th style="width: 70px">
+        КБМ
+      </th>
+    </tr>
+    <tr *ngFor="let item of combineInfo">
+      <td>{{item.driver.fio}}</td>
+      <td>{{item.driver.age}}</td>
+      <td>{{item.driver.stage}}</td>
+      <td>{{item.driver.kbm}}</td>
+    </tr>
+    <tr>
+      <td>Итоговая стоимость ОСАГО</td>
+      <td>{{finalPriseInTable}} рублей</td>
+    </tr>
+  </table>
+</div>

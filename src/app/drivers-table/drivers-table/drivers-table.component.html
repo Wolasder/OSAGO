@@ -1,0 +1,50 @@
+<h2>Таблица водителей</h2>
+<div class="drivers-table">
+  <table>
+    <tr>
+      <th style="width: 300px">
+        Ф.И.О.
+      </th>
+      <th style="width: 70px">
+        Возраст водителя
+      </th>
+      <th style="width: 70px">
+        Стаж вождения
+      </th>
+      <th style="width: 70px">
+        КБМ
+      </th>
+      <th style="width: 70px">
+        Удалить
+      </th>
+    </tr>
+    <tr
+      *ngFor="let item of driverInfoInTable; let i = index"
+      (dblclick)="changeDriverDblclick(item, i)"
+    >
+      <td>{{item.fio}}</td>
+      <td>{{item.age}}</td>
+      <td>{{item.stage}}</td>
+      <td>{{item.kbm}}</td>
+      <td>
+        <app-button
+          [text]="'х'"
+          [padding]="'4px 10px'"
+          (click)="deleteDriver(i)"
+        ></app-button>
+      </td>
+    </tr>
+  </table>
+  <h3 *ngIf="driverInfoInTable.length > 0">
+    Для редактирования дважды кликни по строке водителя
+  </h3>
+  <h3 *ngIf="driverInfoInTable.length === 0">
+    Нет добавленных водителей
+  </h3>
+</div>
+
+
+
+
+
+

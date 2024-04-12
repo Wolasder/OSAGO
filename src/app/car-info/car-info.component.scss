@@ -1,0 +1,61 @@
+@import 'src/environment.scss';
+
+.car-info-form {
+  display: flex;
+  justify-content: center;
+}
+
+.car-info {
+  background-color: $color-selected;
+}
+
+form {
+  width: 450px;
+}
+
+.select {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-left: 6px;
+}
+
+select {
+  width: 242px;
+  height: 50px;
+  margin: 10px 5px;
+  padding: 13px 6px 11px 10px;
+  font-family: $font-family-noto;
+  font-size: 14px;
+  line-height: 1.57143;
+  font-weight: 400;
+  font-style: normal;
+  color: $color-input;
+  border: 1px solid $color-input-border;
+  border-radius: 10px;
+  background: $color-input-background;
+  outline: none;
+}
+
+h2 {
+  display: flex;
+  justify-content: center;
+  height: 70px;
+  align-items: flex-end;
+  padding: 0px 20px 20px 20px;
+  font-family: $font-family-kievit;
+  font-size: 24px;
+  line-height: 1.33333;
+  font-weight: 600;
+  text-align: center;
+  background-color: $background-color-h2;
+  color: $color-h2;
+}
+
+.car-info-number{
+  display: flex;
+  align-items: center;
+}
+
+
+
