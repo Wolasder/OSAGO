@@ -1,6 +1,6 @@
 @import 'src/environment.scss';
 
-.add-driver{
+.add-driver-block {
   background-color: $color-selected;
 }
 
@@ -9,28 +9,28 @@
   justify-content: center;
 }
 
-form {
+.form {
   width: 450px;
 }
 
 .field {
   margin: 10px;
 }
-.add-driver-button{
+.add-driver-button {
   display: flex;
   justify-content: center;
   margin: 10px;
   gap: 20px;
 }
 
-.select {
+.select-block {
   display: flex;
   align-items: center;
   justify-content: space-between;
   padding-left: 6px;
 }
 
-select {
+.select {
   width: 242px;
   height: 50px;
   margin: 10px 16px;

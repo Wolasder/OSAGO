@@ -1,6 +1,6 @@
-<div class="add-driver">
+<div class="add-driver-block">
   <div class="add-driver-form">
-    <form>
+    <form class="form">
       <div class="field">
         <app-input
           [type]="'text'"
@@ -29,31 +29,16 @@
           (onChange)="driver.stage = $event"
         ></app-input>
       </div>
-      <div class="select">
+      <div class="select-block">
         <p>Сколько лет не было аварий?</p>
-        <select
-          name="kbm"
-          [(ngModel)]="driver.kbm"
-        >
-          <option
-            *ngFor="let item of kbm"
-            [value]="item.value">{{item.description}}</option>
+        <select class="select" name="kbm" [(ngModel)]="driver.kbm">
+          <option *ngFor="let item of kbm" [value]="item.value">{{ item.description }}</option>
         </select>
       </div>
       <div class="add-driver-button">
-        <app-button
-          [text]="textBtnAdd"
-          (click)="clickButtonAdd()"
-        ></app-button>
-        <app-button
-          [text]="'Отменить'"
-          (click)="clickButtonCancel()"
-        ></app-button>
+        <app-button [text]="textBtnAdd" (click)="clickButtonAdd()"></app-button>
+        <app-button [text]="'Отменить'" (click)="clickButtonCancel()"></app-button>
       </div>
     </form>
   </div>
 </div>
-
-
-
-

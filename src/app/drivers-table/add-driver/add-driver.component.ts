@@ -1,25 +1,15 @@
 import {Component, EventEmitter, Input, Output} from '@angular/core';
-import {DriverModel} from "../../shared/model/driver.model";
-import {KbmModel} from "../../shared/model/kbm.model";
+import {DriverModel} from '../../shared/model/driver.model';
+import {KbmModel} from '../../shared/model/kbm.model';
 
 @Component({
   selector: 'app-add-driver',
   templateUrl: './add-driver.component.html',
-  styleUrls: ['./add-driver.component.scss']
+  styleUrls: ['./add-driver.component.scss'],
 })
 export class AddDriverComponent {
-  @Input()
-  public set setDriver(driver: DriverModel) {
-    if (!driver.isNew) {
-      this.driver = driver
-      this.textBtnAdd = 'Сохранить'
-    }
-    return
-  };
-
   @Output() public clickBtnCancel: EventEmitter<boolean> = new EventEmitter<boolean>();
   @Output() public clickBtnAdd: EventEmitter<DriverModel> = new EventEmitter<DriverModel>();
-
   public driver: DriverModel = new DriverModel();
   public textBtnAdd: string = 'Добавить';
   public kbm: KbmModel[] = [
@@ -33,30 +23,34 @@ export class AddDriverComponent {
     {value: '0.63', description: '7 лет - КБМ 0.63'},
     {value: '0.57', description: '8 лет - КБМ 0.57'},
     {value: '0.52', description: '9 лет - КБМ 0.52'},
-    {value: '0.46', description: '10 и более лет - КБМ 0.46'}
+    {value: '0.46', description: '10 и более лет - КБМ 0.46'},
   ];
+
+  @Input()
+  public set setDriver(driver: DriverModel) {
+    if (!driver.isNew) {
+      this.driver = driver;
+      this.textBtnAdd = 'Сохранить';
+    }
+  }
 
   //закрывает форму добавления
   public clickButtonCancel(): void {
-    this.clickBtnCancel.emit(false)
+    this.clickBtnCancel.emit(false);
   }
 
   public clickButtonAdd(): void {
     //закрывает форму добавления
-    this.clickBtnCancel.emit(false)
+    this.clickBtnCancel.emit(false);
 
     //проверка на заполненность
-    if (!this.driver.fio.length ||
-      !this.driver.age.length ||
-      !this.driver.stage.length) {
-      alert('Заполните поля ввода данных')
+    if (!this.driver.fio.length || !this.driver.age.length || !this.driver.stage.length) {
+      alert('Заполните поля ввода данных');
     } else {
-      this.driver.isNew = false
-      this.clickBtnAdd.emit(this.driver)
+      this.driver.isNew = false;
+      this.clickBtnAdd.emit(this.driver);
       //очищает форму
-      this.driver = new DriverModel()
+      this.driver = new DriverModel();
     }
   }
-
 }
-

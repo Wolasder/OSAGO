@@ -1,4 +1,4 @@
-import {CityModel} from "./city.model";
+import {CityModel} from './city.model';
 
 export class CarGosNumber {
   public number: string;
@@ -11,8 +11,14 @@ export class CarGosNumber {
     this.country = info?.country ?? '';
   }
 
-  public get view():string {
-    return this.number.trim().toUpperCase() + ' ' + this.region.trim().toUpperCase() + ' ' + this.country.trim().toUpperCase()
+  public get view(): string {
+    return (
+      this.number.trim().toUpperCase() +
+      ' ' +
+      this.region.trim().toUpperCase() +
+      ' ' +
+      this.country.trim().toUpperCase()
+    );
   }
 }
 
@@ -29,5 +35,3 @@ export class CarInfoModel {
     this.vin = info?.vin ?? '';
   }
 }
-
-

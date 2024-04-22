@@ -1,9 +1,9 @@
-import {Component, EventEmitter, Input, Output,} from '@angular/core';
+import {Component, EventEmitter, Input, Output} from '@angular/core';
 
 @Component({
   selector: 'app-button',
   templateUrl: './button.component.html',
-  styleUrls: ['./button.component.scss']
+  styleUrls: ['./button.component.scss'],
 })
 export class ButtonComponent {
   @Input() public text: string = 'Добавить водителя';
@@ -12,9 +12,7 @@ export class ButtonComponent {
   @Input() public disableBtn: boolean = false;
   @Output() public clickBtn: EventEmitter<boolean> = new EventEmitter<boolean>();
 
-  public clickButton():void {
-    this.clickBtn.emit(true)
+  public clickButton(): void {
+    this.clickBtn.emit(true);
   }
-
-
 }

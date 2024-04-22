@@ -5,22 +5,22 @@
   justify-content: center;
 }
 
-.car-info {
+.car-info-block {
   background-color: $color-selected;
 }
 
-form {
+.form {
   width: 450px;
 }
 
-.select {
+.select-city {
   display: flex;
   align-items: center;
   justify-content: space-between;
   padding-left: 6px;
 }
 
-select {
+.select {
   width: 242px;
   height: 50px;
   margin: 10px 5px;
@@ -37,25 +37,7 @@ select {
   outline: none;
 }
 
-h2 {
-  display: flex;
-  justify-content: center;
-  height: 70px;
-  align-items: flex-end;
-  padding: 0px 20px 20px 20px;
-  font-family: $font-family-kievit;
-  font-size: 24px;
-  line-height: 1.33333;
-  font-weight: 600;
-  text-align: center;
-  background-color: $background-color-h2;
-  color: $color-h2;
-}
-
-.car-info-number{
+.car-info-number {
   display: flex;
   align-items: center;
 }
-
-
-

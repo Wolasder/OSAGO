@@ -7,5 +7,3 @@ export class KbmModel {
     this.description = '';
   }
 }
-
-

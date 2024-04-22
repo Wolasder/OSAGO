@@ -4,36 +4,12 @@
   </div>
   <div>
     <input
-      [ngStyle]="{'width': width, 'margin-left': marginLeft}"
+      [ngStyle]="{width: width, 'margin-left': marginLeft}"
       [placeholder]="placeholder"
       [type]="type"
       [name]="'ngModel'"
       [ngModel]="myInputValue"
       (ngModelChange)="onChange.emit($event)"
-    >
+    />
   </div>
 </form>
-
-
-
-
-
-
-
-
-
-
-<!--<form>-->
-<!--  <div>-->
-<!--    <label [textContent]="label"></label>-->
-<!--  </div>-->
-<!--  <div>-->
-<!--    <input-->
-<!--      [ngStyle]="{'width': width, 'margin-left': marginLeft}"-->
-<!--      [placeholder]="placeholder"-->
-<!--      [type]="type"-->
-<!--      [ngModel]="value"-->
-<!--      (ngModelChange)="changeValue($event)"-->
-<!--    >-->
-<!--  </div>-->
-<!--</form>-->

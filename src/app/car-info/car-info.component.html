@@ -1,18 +1,14 @@
-<div class="car-info">
-  <h2>Данные об автомобиле</h2>
+<div class="car-info-block">
+  <app-title-h2 titleH2="{{ titleH2 }}"></app-title-h2>
   <div class="car-info-form">
-    <form>
-      <div class="select">
+    <form class="form">
+      <div class="select-city">
         <p>Город регистрации</p>
-        <select
-          name="city"
-          [(ngModel)]="carInfo.city.city"
-          (ngModelChange) = "setKbm($event)"
-        >
-          <option
-            *ngFor="let item of city"
-            [value]="item.city"
-            >{{item.city}}</option>
+        <select class="select" name="city" [(ngModel)]="carInfo.city" (ngModelChange)="carInfoToKbm()">
+          <option [ngValue]="{city: 'Москва', value: '1.5'}">Москва</option>
+          <option [ngValue]="{city: 'Санкт-Петербург', value: '1.5'}">Санкт-Петербург</option>
+          <option [ngValue]="{city: 'Белгород', value: '1.1'}">Белгород</option>
+          <option [ngValue]="{city: 'Курск', value: '1.1'}">Курск</option>
         </select>
       </div>
       <div>
@@ -54,59 +50,10 @@
           [type]="'text'"
           [label]="'Vin'"
           [placeholder]="'vin'"
-          [myInputValue] = "carInfo.vin"
+          [myInputValue]="carInfo.vin"
           (onChange)="carInfo.vin = $event; carInfoToKbm()"
         ></app-input>
       </div>
     </form>
   </div>
 </div>
-
-
-
-
-
-
-<!--<div>-->
-<!--  <h3>Данные об автомобиле</h3>-->
-<!--  <div class="car-info-form">-->
-<!--    <form>-->
-<!--      <div>-->
-<!--        <app-input-->
-<!--          type="date"-->
-<!--          label="Год регистрации"-->
-<!--        ></app-input>-->
-<!--      </div>-->
-<!--      <div>-->
-<!--        <app-input-->
-<!--          type="text"-->
-<!--          label="Марка"-->
-<!--        ></app-input>-->
-<!--      </div>-->
-<!--      <div class="car-info-number">-->
-<!--        <app-input-->
-<!--          label="Гос номер"-->
-<!--          type="text"-->
-<!--          width="width: 80px;"-->
-<!--          placeholder="A 111 AA"-->
-<!--        ></app-input>-->
-<!--        <app-input-->
-<!--          type="text"-->
-<!--          width="width: 80px;"-->
-<!--          placeholder="31"-->
-<!--        ></app-input>-->
-<!--        <app-input-->
-<!--          type="text"-->
-<!--          width="width: 80px;"-->
-<!--          placeholder="RUS"-->
-<!--        ></app-input>-->
-<!--      </div>-->
-<!--      <div>-->
-<!--        <app-input-->
-<!--          type="text"-->
-<!--          label="vin"-->
-<!--        ></app-input>-->
-<!--      </div>-->
-<!--    </form>-->
-<!--  </div>-->
-<!--</div>-->

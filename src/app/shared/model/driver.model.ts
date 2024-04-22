@@ -4,8 +4,7 @@ export class DriverModel {
   public age: string;
   public stage: string;
   public kbm: string;
-  public kas: number;
-
+  public coefficientAgeStage: number;
 
   constructor() {
     this.isNew = true;
@@ -13,6 +12,6 @@ export class DriverModel {
     this.age = '';
     this.stage = '';
     this.kbm = '';
-    this.kas = 0;
+    this.coefficientAgeStage = 0;
   }
 }

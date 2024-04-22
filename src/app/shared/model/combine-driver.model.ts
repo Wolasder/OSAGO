@@ -1,5 +1,5 @@
-import {DriverModel} from "./driver.model";
-import {CarInfoModel} from "./car-info.model";
+import {DriverModel} from './driver.model';
+import {CarInfoModel} from './car-info.model';
 
 export class CombineDriverModel {
   public driver: DriverModel;
