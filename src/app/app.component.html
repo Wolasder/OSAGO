@@ -3,20 +3,23 @@
 <app-car-info (carInfoChange)="getCarInfo($event)"></app-car-info>
 
 <app-drivers-table
+  [driverData]="driverInfo"
   (deleteDriverEvent)="updatePersonInfo()"
   (editableDriver)="driverChange($event)"
-  [driverData]="driverInfo"
 ></app-drivers-table>
 
 <app-title-h2 [titleTextForBlock]="titleBlock"></app-title-h2>
 
-<app-button (clickBtn)="toggleVisible()" [disableBtn]="!!driverData"></app-button>
+<app-button
+  [disableBtn]="!!driverData"
+  (clickBtn)="toggleVisible()"
+></app-button>
 
 <app-add-driver
-  (clickBtnAdd)="addDriverInTableArray($event)"
-  (clickBtnCancel)="toggleVisible(false)"
   *ngIf="driverData"
   [setDriver]="driverData"
+  (clickBtnAdd)="addDriverInTableArray($event)"
+  (clickBtnCancel)="toggleVisible(false)"
 ></app-add-driver>
 
 <app-kbm

@@ -14,7 +14,7 @@
       <td class="drivers-table__data">{{ item.stage }}</td>
       <td class="drivers-table__data">{{ item.kbm }}</td>
       <td class="drivers-table__data">
-        <app-button (click)="deleteDriver(i)" padding="4px 10px" text="х"></app-button>
+        <app-button padding="4px 10px" text="х" (click)="deleteDriver(i)"></app-button>
       </td>
     </tr>
   </table>

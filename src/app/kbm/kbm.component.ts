@@ -17,7 +17,7 @@ export class KbmComponent {
   private CoefficientNumOfDrivers: number = 0;
   private BasePrise: number = 10000;
 
-  GetPrice() {
+  protected GetPrice() {
     //валидация на заполнение полей
     if (
       !this.combineInfo[0].carInfo.model.length ||

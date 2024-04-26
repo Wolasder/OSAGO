@@ -26,14 +26,14 @@ export class AppComponent implements OnInit {
     this.driverInfo = this.localStorageService.getLocalStorage();
   }
 
-  public toggleVisible(event: boolean = true): void {
+  protected toggleVisible(event: boolean = true): void {
     if (this.currentIndexEditDriver) {
       this.driverInfo.splice(this.currentIndexEditDriver, 1, this.bufferDriver);
     }
     this.driverData = event ? new DriverModel() : null;
   }
 
-  public addDriverInTableArray(driver: DriverModel): void {
+  protected addDriverInTableArray(driver: DriverModel): void {
     if (!this.currentIndexEditDriver) {
       this.driverInfo.push(driver);
     } else {
@@ -48,18 +48,18 @@ export class AppComponent implements OnInit {
     this.updatePersonInfo();
   }
 
-  public driverChange(event: { driver: DriverModel; index: number }): void {
+  protected driverChange(event: { driver: DriverModel; index: number }): void {
     this.driverData = event.driver;
     this.bufferDriver = JSON.parse(JSON.stringify(this.driverData));
     this.currentIndexEditDriver = event.index;
   }
 
-  public getCarInfo(event: CarInfoModel): void {
+  protected getCarInfo(event: CarInfoModel): void {
     this.carInfo = new CarInfoModel(event);
     this.updatePersonInfo();
   }
 
-  public updatePersonInfo(): void {
+  protected updatePersonInfo(): void {
     this.combineDriversInfo = this.driverInfo.map(
       (driver: DriverModel) => new CombineDriverModel(driver, this.carInfo),
     );

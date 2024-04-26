@@ -17,13 +17,13 @@ export class DriversTableComponent {
 
   protected titleDriversTable: string = 'Таблица водителей';
 
-  public deleteDriver(index: number): void {
+  protected deleteDriver(index: number): void {
     this.driverData.splice(index, 1);
     localStorage.setItem('key', JSON.stringify(this.driverData));
     this.deleteDriverEvent.emit();
   }
 
-  public changeDriverDblclick(driver: DriverModel, index: number): void {
+  protected changeDriverDblclick(driver: DriverModel, index: number): void {
     this.editableDriver.emit({driver: driver, index: index});
   }
 }

@@ -13,12 +13,12 @@ export class CarInfoComponent {
   protected carInfo: CarInfoModel = new CarInfoModel();
   protected titleCarInfo: string = 'Данные об автомобиле';
 
-  public cityChange(city: CityModel): void {
+  protected cityChange(city: CityModel): void {
     this.carInfo.city = city;
     this.infoChange();
   }
 
-  public infoChange(): void {
+  protected infoChange(): void {
     this.carInfoChange.emit(this.carInfo);
   }
 }

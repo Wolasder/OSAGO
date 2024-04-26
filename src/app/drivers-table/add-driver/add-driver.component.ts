@@ -22,11 +22,11 @@ export class AddDriverComponent {
   }
 
   //закрывает форму добавления
-  public clickButtonCancel(): void {
+  protected clickButtonCancel(): void {
     this.clickBtnCancel.emit(false);
   }
 
-  public clickButtonAdd(): void {
+  protected clickButtonAdd(): void {
     //закрывает форму добавления
     this.clickBtnCancel.emit(false);
 

@@ -9,10 +9,10 @@ export class ButtonComponent {
   @Input() public text: string = 'Добавить водителя';
   @Input() public padding: string = '';
   @Input() public disableBtn: boolean = false;
-  
+
   @Output() public clickBtn: EventEmitter<boolean> = new EventEmitter<boolean>();
 
-  public clickButton(): void {
+  protected clickButton(): void {
     this.clickBtn.emit(true);
   }
 }

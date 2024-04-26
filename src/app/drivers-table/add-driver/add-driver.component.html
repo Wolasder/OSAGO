@@ -3,41 +3,48 @@
     <form class="add-driver__form">
       <div class="form__driver-info">
         <app-input
-          (onChange)="driver.fio = $event"
-          [InputValue]="driver.fio"
           inputName="name"
           label="Ф.И.О."
           placeholder="Ф.И.О."
           type="text"
+          [InputValue]="driver.fio"
+          (onChange)="driver.fio = $event"
         ></app-input>
       </div>
       <div class="form__driver-info">
         <app-input
-          (onChange)="driver.age = $event"
-          [InputValue]="driver.age"
           label="Возраст водителя"
           placeholder="Возраст"
           type="number"
+          [InputValue]="driver.age"
+          (onChange)="driver.age = $event"
         ></app-input>
       </div>
       <div class="form__driver-info">
         <app-input
-          (onChange)="driver.stage = $event"
-          [InputValue]="driver.stage"
           label="Стаж вождения"
           placeholder="Стаж"
           type="number"
+          [InputValue]="driver.stage"
+          (onChange)="driver.stage = $event"
         ></app-input>
       </div>
       <div class="form__select-kbm">
         <p>Сколько лет не было аварий?</p>
-        <select [(ngModel)]="driver.kbm" class="select-kbm__options" name="kbm">
-          <option *ngFor="let item of kbm" [value]="item.value">{{ item.description }}</option>
+        <select
+          class="select-kbm__options"
+          name="kbm"
+          [(ngModel)]="driver.kbm"
+        >
+          <option
+            *ngFor="let item of kbm"
+            [value]="item.value"
+          >{{ item.description }}</option>
         </select>
       </div>
       <div class="form__buttons">
-        <app-button (click)="clickButtonAdd()" text="{{driver.isNew ? 'Добавить' : 'Сохранить'}}"></app-button>
-        <app-button (click)="clickButtonCancel()" text="Отменить"></app-button>
+        <app-button text="{{driver.isNew ? 'Добавить' : 'Сохранить'}}" (click)="clickButtonAdd()"></app-button>
+        <app-button text="Отменить" (click)="clickButtonCancel()"></app-button>
       </div>
     </form>
   </div>
