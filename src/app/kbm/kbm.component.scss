@@ -1,6 +1,6 @@
 @import 'src/environment.scss';
 
-.kbm-block {
+.kbm {
   display: flex;
   justify-content: center;
   background-color: $color-kbm-background;
@@ -9,20 +9,20 @@
   flex-direction: column;
 }
 
-.table {
+.kbm-table {
   border-collapse: collapse;
-}
 
-.th {
-  background-color: $color-table-th-background;
-  padding: 16px 10px;
-  color: $color-table-th-text;
-  border: 1px solid $color-table-border;
-}
+  &__head {
+    background-color: $color-table-th-background;
+    padding: 16px 10px;
+    color: $color-table-th-text;
+    border: 1px solid $color-table-border;
+  }
 
-.td {
-  background-color: $color-table-td-background;
-  border: 1px solid $color-table-border;
-  color: $color-table-text;
-  padding: 6px 6px;
+  &__data {
+    background-color: $color-table-td-background;
+    border: 1px solid $color-table-border;
+    color: $color-table-text;
+    padding: 6px 6px;
+  }
 }

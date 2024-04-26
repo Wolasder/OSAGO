@@ -1,23 +1,23 @@
-<app-title-h2 titleH2="{{ titleH2 }}"></app-title-h2>
-<div class="drivers-table-block">
-  <table class="table">
+<app-title-h2 [titleTextForBlock]="titleDriversTable"></app-title-h2>
+<div class="drivers">
+  <table class="drivers-table">
     <tr>
-      <th class="th" style="width: 300px">Ф.И.О.</th>
-      <th class="th" style="width: 70px">Возраст водителя</th>
-      <th class="th" style="width: 70px">Стаж вождения</th>
-      <th class="th" style="width: 70px">КБМ</th>
-      <th class="th" style="width: 70px">Удалить</th>
+      <th class="drivers-table__head" style="width: 300px">Ф.И.О.</th>
+      <th class="drivers-table__head" style="width: 70px">Возраст водителя</th>
+      <th class="drivers-table__head" style="width: 70px">Стаж вождения</th>
+      <th class="drivers-table__head" style="width: 70px">КБМ</th>
+      <th class="drivers-table__head" style="width: 70px">Удалить</th>
     </tr>
-    <tr *ngFor="let item of driverInfoInTable; let i = index" (dblclick)="changeDriverDblclick(item, i)">
-      <td class="td">{{ item.fio }}</td>
-      <td class="td">{{ item.age }}</td>
-      <td class="td">{{ item.stage }}</td>
-      <td class="td">{{ item.kbm }}</td>
-      <td class="td">
-        <app-button [text]="'х'" [padding]="'4px 10px'" (click)="deleteDriver(i)"></app-button>
+    <tr (dblclick)="changeDriverDblclick(item, i)" *ngFor="let item of driverData; let i = index">
+      <td class="drivers-table__data">{{ item.fio }}</td>
+      <td class="drivers-table__data">{{ item.age }}</td>
+      <td class="drivers-table__data">{{ item.stage }}</td>
+      <td class="drivers-table__data">{{ item.kbm }}</td>
+      <td class="drivers-table__data">
+        <app-button (click)="deleteDriver(i)" padding="4px 10px" text="х"></app-button>
       </td>
     </tr>
   </table>
-  <h3 *ngIf="driverInfoInTable.length > 0">Для редактирования дважды кликни по строке водителя</h3>
-  <h3 *ngIf="driverInfoInTable.length === 0">Нет добавленных водителей</h3>
+  <h3 *ngIf="driverData.length > 0">Для редактирования дважды кликни по строке водителя</h3>
+  <h3 *ngIf="driverData.length === 0">Нет добавленных водителей</h3>
 </div>

@@ -1,26 +1,26 @@
 @import 'src/environment.scss';
 
-.car-info-form {
+.car-info {
+  background-color: $color-selected;
+}
+
+.car-info__inner {
   display: flex;
   justify-content: center;
 }
 
-.car-info-block {
-  background-color: $color-selected;
-}
-
-.form {
+.car-info__form {
   width: 450px;
 }
 
-.select-city {
+.form__select-city {
   display: flex;
   align-items: center;
   justify-content: space-between;
   padding-left: 6px;
 }
 
-.select {
+.select-city__options {
   width: 242px;
   height: 50px;
   margin: 10px 5px;
@@ -37,7 +37,7 @@
   outline: none;
 }
 
-.car-info-number {
+.form__car-number {
   display: flex;
   align-items: center;
 }

@@ -1,6 +1,6 @@
 @import 'src/environment.scss';
 
-.drivers-table-block {
+.drivers {
   display: flex;
   justify-content: center;
   background-color: $color-table-background;
@@ -9,20 +9,21 @@
   flex-direction: column;
 }
 
-.table {
+.drivers-table {
   border-collapse: collapse;
+
+  &__head {
+    background-color: $color-table-th-background;
+    padding: 16px 10px;
+    color: $color-table-th-text;
+    border: 1px solid $color-table-border;
+  }
+
+  &__data {
+    background-color: $color-table-td-background;
+    border: 1px solid $color-table-border;
+    color: $color-table-text;
+    padding: 6px 6px;
+  }
 }
 
-.th {
-  background-color: $color-table-th-background;
-  padding: 16px 10px;
-  color: $color-table-th-text;
-  border: 1px solid $color-table-border;
-}
-
-.td {
-  background-color: $color-table-td-background;
-  border: 1px solid $color-table-border;
-  color: $color-table-text;
-  padding: 6px 6px;
-}

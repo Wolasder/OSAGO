@@ -1,10 +1,11 @@
-<div class="car-info-block">
-  <app-title-h2 titleH2="{{ titleH2 }}"></app-title-h2>
-  <div class="car-info-form">
-    <form class="form">
-      <div class="select-city">
+<div class="car-info">
+  <app-title-h2 [titleTextForBlock]="titleCarInfo"></app-title-h2>
+  <div class="car-info__inner">
+    <form class="car-info__form">
+      <div class="form__select-city">
         <p>Город регистрации</p>
-        <select class="select" name="city" [(ngModel)]="carInfo.city" (ngModelChange)="carInfoToKbm()">
+        <select (ngModelChange)="cityChange($event)" [ngModel]="carInfo.city" class="select-city__options"
+                name="city">
           <option [ngValue]="{city: 'Москва', value: '1.5'}">Москва</option>
           <option [ngValue]="{city: 'Санкт-Петербург', value: '1.5'}">Санкт-Петербург</option>
           <option [ngValue]="{city: 'Белгород', value: '1.1'}">Белгород</option>
@@ -13,45 +14,45 @@
       </div>
       <div>
         <app-input
-          [type]="'text'"
-          [label]="'Марка'"
-          [placeholder]="'Марка'"
-          [myInputValue]="carInfo.brand"
-          (onChange)="carInfo.brand = $event; carInfoToKbm()"
+          (onChange)="carInfo.model = $event; infoChange()"
+          [InputValue]="carInfo.model"
+          label="Марка"
+          placeholder="Марка"
+          type="text"
         ></app-input>
       </div>
-      <div class="car-info-number">
+      <div class="form__car-number">
         <app-input
-          [label]="'Гос номер'"
-          [type]="'text'"
-          [width]="'66px'"
-          [marginLeft]="'130px'"
-          [placeholder]="'A 111 AA'"
-          [myInputValue]="carInfo.gosNumber.number"
-          (onChange)="carInfo.gosNumber.number = $event; carInfoToKbm()"
+          (onChange)="carInfo.gosNumber.number = $event; infoChange()"
+          [InputValue]="carInfo.gosNumber.number"
+          label="Гос номер"
+          marginLeft="130px"
+          placeholder="A 111 AA"
+          type="text"
+          width="66px"
         ></app-input>
         <app-input
-          [type]="'text'"
-          [width]="'30px'"
-          [placeholder]="'31'"
-          [myInputValue]="carInfo.gosNumber.region"
-          (onChange)="carInfo.gosNumber.region = $event; carInfoToKbm()"
+          (onChange)="carInfo.gosNumber.region = $event; infoChange()"
+          [InputValue]="carInfo.gosNumber.region"
+          placeholder="31"
+          type="text"
+          width="30px"
         ></app-input>
         <app-input
-          [type]="'text'"
-          [width]="'30px'"
-          [placeholder]="'RUS'"
-          [myInputValue]="carInfo.gosNumber.country"
-          (onChange)="carInfo.gosNumber.country = $event; carInfoToKbm()"
+          (onChange)="carInfo.gosNumber.country = $event; infoChange()"
+          [InputValue]="carInfo.gosNumber.country"
+          placeholder="RUS"
+          type="text"
+          width="30px"
         ></app-input>
       </div>
       <div>
         <app-input
-          [type]="'text'"
-          [label]="'Vin'"
-          [placeholder]="'vin'"
-          [myInputValue]="carInfo.vin"
-          (onChange)="carInfo.vin = $event; carInfoToKbm()"
+          (onChange)="carInfo.vin = $event; infoChange()"
+          [InputValue]="carInfo.vin"
+          label="Vin"
+          placeholder="vin"
+          type="text"
         ></app-input>
       </div>
     </form>

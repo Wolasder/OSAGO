@@ -1,43 +1,43 @@
-<div class="add-driver-block">
-  <div class="add-driver-form">
-    <form class="form">
-      <div class="field">
+<div class="add-driver">
+  <div class="add-driver__inner">
+    <form class="add-driver__form">
+      <div class="form__driver-info">
         <app-input
-          [type]="'text'"
-          [label]="'Ф.И.О.'"
-          [placeholder]="'Ф.И.О.'"
-          [inputName]="'name'"
-          [myInputValue]="driver.fio"
           (onChange)="driver.fio = $event"
+          [InputValue]="driver.fio"
+          inputName="name"
+          label="Ф.И.О."
+          placeholder="Ф.И.О."
+          type="text"
         ></app-input>
       </div>
-      <div class="field">
+      <div class="form__driver-info">
         <app-input
-          [type]="'number'"
-          [label]="'Возраст водителя'"
-          [placeholder]="'Возраст'"
-          [myInputValue]="driver.age"
           (onChange)="driver.age = $event"
+          [InputValue]="driver.age"
+          label="Возраст водителя"
+          placeholder="Возраст"
+          type="number"
         ></app-input>
       </div>
-      <div class="field">
+      <div class="form__driver-info">
         <app-input
-          [type]="'number'"
-          [label]="'Стаж вождения'"
-          [placeholder]="'Стаж'"
-          [myInputValue]="driver.stage"
           (onChange)="driver.stage = $event"
+          [InputValue]="driver.stage"
+          label="Стаж вождения"
+          placeholder="Стаж"
+          type="number"
         ></app-input>
       </div>
-      <div class="select-block">
+      <div class="form__select-kbm">
         <p>Сколько лет не было аварий?</p>
-        <select class="select" name="kbm" [(ngModel)]="driver.kbm">
+        <select [(ngModel)]="driver.kbm" class="select-kbm__options" name="kbm">
           <option *ngFor="let item of kbm" [value]="item.value">{{ item.description }}</option>
         </select>
       </div>
-      <div class="add-driver-button">
-        <app-button [text]="textBtnAdd" (click)="clickButtonAdd()"></app-button>
-        <app-button [text]="'Отменить'" (click)="clickButtonCancel()"></app-button>
+      <div class="form__buttons">
+        <app-button (click)="clickButtonAdd()" text="{{driver.isNew ? 'Добавить' : 'Сохранить'}}"></app-button>
+        <app-button (click)="clickButtonCancel()" text="Отменить"></app-button>
       </div>
     </form>
   </div>

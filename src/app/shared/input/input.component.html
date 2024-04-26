@@ -1,15 +1,17 @@
-<form>
+<form class="input-main">
   <div>
     <label [textContent]="label"></label>
   </div>
   <div>
     <input
+      (ngModelChange)="onChange.emit($event)"
+      [ngModel]="InputValue"
       [ngStyle]="{width: width, 'margin-left': marginLeft}"
       [placeholder]="placeholder"
       [type]="type"
-      [name]="'ngModel'"
-      [ngModel]="myInputValue"
-      (ngModelChange)="onChange.emit($event)"
+      autocomplete="off"
+      class="input-main__inner"
+      name="ngModel"
     />
   </div>
 </form>

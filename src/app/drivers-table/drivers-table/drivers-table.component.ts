@@ -7,26 +7,23 @@ import {DriverModel} from '../../shared/model/driver.model';
   styleUrls: ['./drivers-table.component.scss'],
 })
 export class DriversTableComponent {
-  @Input() public driverInfoInTable: DriverModel[] = [];
+  @Input() public driverData: DriverModel[] = [];
 
-  @Output() public changeTableDriver: EventEmitter<boolean> = new EventEmitter<boolean>();
-  @Output() public changeDriverInput: EventEmitter<{driver: DriverModel; index: number}> = new EventEmitter<{
+  @Output() public editableDriver: EventEmitter<{ driver: DriverModel; index: number }> = new EventEmitter<{
     driver: DriverModel;
     index: number;
   }>();
-  @Output() public deleteDriverEv: EventEmitter<void> = new EventEmitter<void>();
+  @Output() public deleteDriverEvent: EventEmitter<void> = new EventEmitter<void>();
 
-  public titleH2: string = 'Таблица водителей';
+  protected titleDriversTable: string = 'Таблица водителей';
 
   public deleteDriver(index: number): void {
-    this.driverInfoInTable.splice(index, 1);
-    localStorage.setItem('key', JSON.stringify(this.driverInfoInTable));
-    this.deleteDriverEv.emit();
+    this.driverData.splice(index, 1);
+    localStorage.setItem('key', JSON.stringify(this.driverData));
+    this.deleteDriverEvent.emit();
   }
 
   public changeDriverDblclick(driver: DriverModel, index: number): void {
-    this.changeTableDriver.emit(true);
-
-    this.changeDriverInput.emit({driver: driver, index: index});
+    this.editableDriver.emit({driver: driver, index: index});
   }
 }

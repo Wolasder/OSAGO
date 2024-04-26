@@ -1,5 +1,5 @@
-<div class="button-block">
-  <button class="button" [ngStyle]="{padding: padding}" [disabled]="disableBtn" (click)="clickButton()">
+<div class="button-main">
+  <button (click)="clickButton()" [disabled]="disableBtn" [ngStyle]="{padding: padding}" class="button-main__inner">
     {{ text }}
   </button>
 </div>

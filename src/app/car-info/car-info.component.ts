@@ -1,5 +1,6 @@
 import {Component, EventEmitter, Output} from '@angular/core';
 import {CarInfoModel} from '../shared/model/car-info.model';
+import {CityModel} from "../shared/model/city.model";
 
 @Component({
   selector: 'app-car-info',
@@ -7,12 +8,17 @@ import {CarInfoModel} from '../shared/model/car-info.model';
   styleUrls: ['./car-info.component.scss'],
 })
 export class CarInfoComponent {
-  @Output() public carInfoForKbm: EventEmitter<CarInfoModel> = new EventEmitter<CarInfoModel>();
+  @Output() public carInfoChange: EventEmitter<CarInfoModel> = new EventEmitter<CarInfoModel>();
 
-  public carInfo: CarInfoModel = new CarInfoModel();
-  public titleH2: string = 'Данные об автомобиле';
+  protected carInfo: CarInfoModel = new CarInfoModel();
+  protected titleCarInfo: string = 'Данные об автомобиле';
 
-  public carInfoToKbm(): void {
-    this.carInfoForKbm.emit(this.carInfo);
+  public cityChange(city: CityModel): void {
+    this.carInfo.city = city;
+    this.infoChange();
+  }
+
+  public infoChange(): void {
+    this.carInfoChange.emit(this.carInfo);
   }
 }

@@ -1,23 +1,24 @@
-<app-title-h1 titleH1="{{ titleH1 }}"></app-title-h1>
+<app-title-h1 [titleTextMain]="titleMain"></app-title-h1>
 
-<app-car-info (carInfoForKbm)="carInfoKbm($event)"></app-car-info>
+<app-car-info (carInfoChange)="getCarInfo($event)"></app-car-info>
 
 <app-drivers-table
-  [driverInfoInTable]="driverFromInputArray"
-  (changeTableDriver)="toggleVisible($event)"
-  (changeDriverInput)="driverChange($event)"
-  (deleteDriverEv)="updatePersonInfo()"
+  (deleteDriverEvent)="updatePersonInfo()"
+  (editableDriver)="driverChange($event)"
+  [driverData]="driverInfo"
 ></app-drivers-table>
 
-<app-title-h2 titleH2="{{ titleH2 }}"></app-title-h2>
+<app-title-h2 [titleTextForBlock]="titleBlock"></app-title-h2>
 
-<app-button [disableBtn]="visibleAddForm" (clickBtn)="toggleVisible($event)"></app-button>
+<app-button (clickBtn)="toggleVisible()" [disableBtn]="!!driverData"></app-button>
 
 <app-add-driver
-  *ngIf="visibleAddForm"
-  [setDriver]="driverChangeInput"
   (clickBtnAdd)="addDriverInTableArray($event)"
-  (clickBtnCancel)="toggleVisible($event)"
+  (clickBtnCancel)="toggleVisible(false)"
+  *ngIf="driverData"
+  [setDriver]="driverData"
 ></app-add-driver>
 
-<app-kbm [combineInfo]="combineDriversInfo" [cityInfo]="carInfo.city.city"></app-kbm>
+<app-kbm
+  [combineInfo]="combineDriversInfo"
+></app-kbm>

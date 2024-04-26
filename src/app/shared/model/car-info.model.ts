@@ -24,13 +24,13 @@ export class CarGosNumber {
 
 export class CarInfoModel {
   public city: CityModel;
-  public brand: string;
+  public model: string;
   public gosNumber: CarGosNumber;
   public vin: string;
 
   constructor(info?: CarInfoModel) {
     this.city = info?.city ? new CityModel(info.city) : new CityModel();
-    this.brand = info?.brand ?? '';
+    this.model = info?.model ?? '';
     this.gosNumber = info?.gosNumber ? new CarGosNumber(info.gosNumber) : new CarGosNumber();
     this.vin = info?.vin ?? '';
   }
