@@ -1,7 +1,7 @@
 import {Component, EventEmitter, Input, Output} from '@angular/core';
 import {DriverModel} from '../../shared/model/driver.model';
 import {KbmModel} from '../../shared/model/kbm.model';
-import {KBM} from "../../kbm/kmb";
+import {KBM} from '../../kbm/kmb';
 
 @Component({
   selector: 'app-add-driver',

@@ -10,10 +10,7 @@
 
 <app-title-h2 [titleTextForBlock]="titleBlock"></app-title-h2>
 
-<app-button
-  [disableBtn]="!!driverData"
-  (clickBtn)="toggleVisible()"
-></app-button>
+<app-button [disableBtn]="!!driverData" (clickBtn)="toggleVisible()"></app-button>
 
 <app-add-driver
   *ngIf="driverData"
@@ -22,6 +19,4 @@
   (clickBtnCancel)="toggleVisible(false)"
 ></app-add-driver>
 
-<app-kbm
-  [combineInfo]="combineDriversInfo"
-></app-kbm>
+<app-kbm [combineInfo]="combineDriversInfo"></app-kbm>

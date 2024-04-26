@@ -19,8 +19,7 @@ export class AppComponent implements OnInit {
   protected driverData: DriverModel | null = null;
   private bufferDriver: DriverModel = new DriverModel();
 
-  constructor(private localStorageService: LocalStorageService) {
-  }
+  constructor(private localStorageService: LocalStorageService) {}
 
   public ngOnInit(): void {
     this.driverInfo = this.localStorageService.getLocalStorage();
@@ -48,7 +47,7 @@ export class AppComponent implements OnInit {
     this.updatePersonInfo();
   }
 
-  protected driverChange(event: { driver: DriverModel; index: number }): void {
+  protected driverChange(event: {driver: DriverModel; index: number}): void {
     this.driverData = event.driver;
     this.bufferDriver = JSON.parse(JSON.stringify(this.driverData));
     this.currentIndexEditDriver = event.index;

@@ -27,5 +27,4 @@ import {DriversTableModule} from './drivers-table/drivers-table/drivers-table.mo
   providers: [LocalStorageService],
   bootstrap: [AppComponent],
 })
-export class AppModule {
-}
+export class AppModule {}

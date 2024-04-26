@@ -1,4 +1,4 @@
-import {KbmModel} from "../shared/model/kbm.model";
+import {KbmModel} from '../shared/model/kbm.model';
 
 export const KBM: KbmModel[] = [
   {value: '1.17', description: '0 лет - КБМ 1.17'},

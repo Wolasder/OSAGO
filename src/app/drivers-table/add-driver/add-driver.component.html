@@ -31,19 +31,12 @@
       </div>
       <div class="form__select-kbm">
         <p>Сколько лет не было аварий?</p>
-        <select
-          class="select-kbm__options"
-          name="kbm"
-          [(ngModel)]="driver.kbm"
-        >
-          <option
-            *ngFor="let item of kbm"
-            [value]="item.value"
-          >{{ item.description }}</option>
+        <select class="select-kbm__options" name="kbm" [(ngModel)]="driver.kbm">
+          <option *ngFor="let item of kbm" [value]="item.value">{{ item.description }}</option>
         </select>
       </div>
       <div class="form__buttons">
-        <app-button text="{{driver.isNew ? 'Добавить' : 'Сохранить'}}" (click)="clickButtonAdd()"></app-button>
+        <app-button text="{{ driver.isNew ? 'Добавить' : 'Сохранить' }}" (click)="clickButtonAdd()"></app-button>
         <app-button text="Отменить" (click)="clickButtonCancel()"></app-button>
       </div>
     </form>

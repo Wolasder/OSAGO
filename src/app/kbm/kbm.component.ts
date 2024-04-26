@@ -69,7 +69,11 @@ export class KbmComponent {
     this.CoefficientNumOfDrivers = 1 + this.combineInfo.length / 10;
     //финальный расчет
     this.finalPrise = Math.round(
-      this.BasePrise * this.CoefficientCity * this.maxValueKbm * this.maxCoefficientAgeStage * this.CoefficientNumOfDrivers,
+      this.BasePrise *
+        this.CoefficientCity *
+        this.maxValueKbm *
+        this.maxCoefficientAgeStage *
+        this.CoefficientNumOfDrivers,
     );
   }
 }

@@ -1,6 +1,6 @@
 import {Component, EventEmitter, Output} from '@angular/core';
 import {CarInfoModel} from '../shared/model/car-info.model';
-import {CityModel} from "../shared/model/city.model";
+import {CityModel} from '../shared/model/city.model';
 
 @Component({
   selector: 'app-car-info',
