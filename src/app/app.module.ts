@@ -10,6 +10,8 @@ import {KbmModule} from './kbm/kbm.module';
 import {TitleH1Module} from './title-h1/title-h1.module';
 import {TitleH2Module} from './title-h2/title-h2.module';
 import {DriversTableModule} from './drivers-table/drivers-table/drivers-table.module';
+import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 
 @NgModule({
   declarations: [AppComponent],
@@ -23,6 +25,9 @@ import {DriversTableModule} from './drivers-table/drivers-table/drivers-table.mo
     ButtonModule,
     TitleH1Module,
     TitleH2Module,
+    BrowserAnimationsModule,
+    FormsModule,
+    ReactiveFormsModule,
   ],
   providers: [LocalStorageService],
   bootstrap: [AppComponent],

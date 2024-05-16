@@ -1,12 +1,11 @@
 import {NgModule} from '@angular/core';
-import {CommonModule, NgFor, NgStyle} from '@angular/common';
+import {CommonModule} from '@angular/common';
 import {InputComponent} from './input.component';
-import {FormsModule} from '@angular/forms';
-import {BrowserModule} from '@angular/platform-browser';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 
 @NgModule({
   declarations: [InputComponent],
-  imports: [CommonModule, FormsModule],
+  imports: [CommonModule, FormsModule, ReactiveFormsModule],
   exports: [InputComponent],
 })
 export class InputModule {}

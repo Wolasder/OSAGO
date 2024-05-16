@@ -10,8 +10,7 @@
       [ngStyle]="{width: width, 'margin-left': marginLeft}"
       [placeholder]="placeholder"
       [type]="type"
-      [ngModel]="InputValue"
-      (ngModelChange)="onChange.emit($event)"
+      [formControl]="formControl"
     />
   </div>
 </form>

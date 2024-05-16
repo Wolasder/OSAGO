@@ -7,7 +7,7 @@
           label="Ф.И.О."
           placeholder="Ф.И.О."
           type="text"
-          [InputValue]="driver.fio"
+          [value]="driver.fio"
           (onChange)="driver.fio = $event"
         ></app-input>
       </div>
@@ -16,7 +16,7 @@
           label="Возраст водителя"
           placeholder="Возраст"
           type="number"
-          [InputValue]="driver.age"
+          [value]="driver.age"
           (onChange)="driver.age = $event"
         ></app-input>
       </div>
@@ -25,7 +25,7 @@
           label="Стаж вождения"
           placeholder="Стаж"
           type="number"
-          [InputValue]="driver.stage"
+          [value]="driver.stage"
           (onChange)="driver.stage = $event"
         ></app-input>
       </div>
