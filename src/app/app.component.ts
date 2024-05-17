@@ -33,7 +33,7 @@ export class AppComponent implements OnInit {
   }
 
   protected addDriverInTableArray(driver: DriverModel): void {
-    if (!this.currentIndexEditDriver) {
+    if (this.currentIndexEditDriver === null) {
       this.driverInfo.push(driver);
     } else {
       this.driverInfo.splice(this.currentIndexEditDriver, 1, driver);

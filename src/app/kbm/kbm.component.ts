@@ -18,20 +18,7 @@ export class KbmComponent {
   private BasePrise: number = 10000;
 
   protected GetPrice() {
-    //валидация на заполнение полей
-    if (
-      !this.combineInfo[0].carInfo.model.length ||
-      !this.combineInfo[0].carInfo.gosNumber.number.length ||
-      !this.combineInfo[0].carInfo.gosNumber.region.length ||
-      !this.combineInfo[0].carInfo.gosNumber.country.length ||
-      !this.combineInfo[0].carInfo.vin.length
-    ) {
-      alert('Заполните все данные автомобиля');
-      return;
-    } else {
-      this.hiddenTable = false;
-    }
-
+    this.hiddenTable = false;
     // фиксация коэффициента города для формулы расчета финальной цены
     this.CoefficientCity = Number(this.combineInfo[0].carInfo.city.value);
 

@@ -10,7 +10,9 @@
     <tr>
       <td class="kbm-table__data">{{ combineInfo[0].carInfo.city.city }}</td>
       <td class="kbm-table__data">{{ combineInfo[0].carInfo.model }}</td>
-      <td class="kbm-table__data">{{ combineInfo[0].carInfo.gosNumber.view }}</td>
+      <td class="kbm-table__data">
+        {{ combineInfo[0].carInfo.gosNumber.view }}
+      </td>
       <td class="kbm-table__data">{{ combineInfo[0].carInfo.vin }}</td>
     </tr>
 
@@ -31,5 +33,5 @@
       <td class="kbm-table__data">{{ finalPrise }} рублей</td>
     </tr>
   </table>
-  <app-button text="Рассчитать" (click)="GetPrice()"></app-button>
+  <app-button text="Рассчитать" [disableBtn]="!combineInfo.length" (click)="GetPrice()"></app-button>
 </div>

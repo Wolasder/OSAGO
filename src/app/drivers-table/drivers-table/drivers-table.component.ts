@@ -9,7 +9,10 @@ import {DriverModel} from '../../shared/model/driver.model';
 export class DriversTableComponent {
   @Input() public driverData: DriverModel[] = [];
 
-  @Output() public editableDriver: EventEmitter<{driver: DriverModel; index: number}> = new EventEmitter<{
+  @Output() public editableDriver: EventEmitter<{
+    driver: DriverModel;
+    index: number;
+  }> = new EventEmitter<{
     driver: DriverModel;
     index: number;
   }>();

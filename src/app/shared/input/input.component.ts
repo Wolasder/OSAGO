@@ -1,12 +1,18 @@
 import {Component, EventEmitter, forwardRef, Input, OnDestroy, OnInit, Output} from '@angular/core';
-import {ControlValueAccessor, FormControl, NG_VALUE_ACCESSOR, NgForm} from '@angular/forms';
+import {ControlValueAccessor, FormControl, NG_VALUE_ACCESSOR} from '@angular/forms';
 import {Subject, takeUntil} from 'rxjs';
 
 @Component({
   selector: 'app-input',
   templateUrl: './input.component.html',
   styleUrls: ['./input.component.scss'],
-  providers: [{provide: NG_VALUE_ACCESSOR, useExisting: forwardRef(() => InputComponent), multi: true}],
+  providers: [
+    {
+      provide: NG_VALUE_ACCESSOR,
+      useExisting: forwardRef(() => InputComponent),
+      multi: true,
+    },
+  ],
 })
 export class InputComponent<T> implements OnInit, OnDestroy, ControlValueAccessor {
   @Input() public type: string = '';
@@ -15,10 +21,6 @@ export class InputComponent<T> implements OnInit, OnDestroy, ControlValueAccesso
   @Input() public placeholder: string = '';
   @Input() public marginLeft: string = '';
   @Input() public inputName: string = '';
-
-  // TODO: убрать после перехода на формГруппу
-  @Input() public value: string = '';
-  @Output() public onChange: EventEmitter<string> = new EventEmitter<string>();
 
   protected formControl: FormControl = new FormControl<T | null>(null);
   private onChangeCallback!: (_: T) => {};
