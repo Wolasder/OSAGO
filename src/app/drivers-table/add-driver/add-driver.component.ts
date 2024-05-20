@@ -5,6 +5,11 @@ import {KBM} from '../../kbm/kmb';
 import {FormControl, FormGroup, Validators} from '@angular/forms';
 import {Subject, takeUntil} from 'rxjs';
 
+type carGosNumberWithoutView = Omit<DriverModel, 'isNew' | 'coefficientAgeStage'>;
+type formGroupDriverModelType = {
+  [property in keyof carGosNumberWithoutView]: FormControl<carGosNumberWithoutView[property]>;
+};
+
 @Component({
   selector: 'app-add-driver',
   templateUrl: './add-driver.component.html',
@@ -25,11 +30,11 @@ export class AddDriverComponent {
     }
   }
 
-  protected formGroup: FormGroup = new FormGroup({
-    fio: new FormControl('', [Validators.required]),
-    age: new FormControl('', [Validators.required, Validators.min(16)]),
-    stage: new FormControl('', [Validators.required]),
-    kbm: new FormControl('', [Validators.required]),
+  protected formGroup: FormGroup = new FormGroup<formGroupDriverModelType>({
+    fio: new FormControl(null, [Validators.required]),
+    age: new FormControl(null, [Validators.required, Validators.min(16)]),
+    stage: new FormControl(null, [Validators.required]),
+    kbm: new FormControl(null, [Validators.required]),
   });
 
   ngOnInit(): void {

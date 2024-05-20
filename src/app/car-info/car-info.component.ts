@@ -1,7 +1,16 @@
 import {Component, EventEmitter, OnDestroy, OnInit, Output} from '@angular/core';
-import {CarInfoModel} from '../shared/model/car-info.model';
+import {CarGosNumber, CarInfoModel} from '../shared/model/car-info.model';
 import {FormControl, FormGroup, Validators} from '@angular/forms';
 import {filter, Subject, takeUntil} from 'rxjs';
+
+type carInfoWithoutGosNum = Omit<CarInfoModel, 'gosNumber'>;
+type carGosNumberWithoutView = Omit<CarGosNumber, 'view'>;
+type formGroupGosNumberType = {
+  [property in keyof carGosNumberWithoutView]: FormControl<carGosNumberWithoutView[property]>;
+};
+type formGroupCarInfoModelType = {gosNumber: FormGroup<formGroupGosNumberType>} & {
+  [property in keyof carInfoWithoutGosNum]: FormControl<carInfoWithoutGosNum[property]>;
+};
 
 @Component({
   selector: 'app-car-info',
@@ -15,15 +24,15 @@ export class CarInfoComponent implements OnInit, OnDestroy {
   protected titleCarInfo: string = 'Данные об автомобиле';
   private readonly unsubscribe$: Subject<void> = new Subject();
 
-  protected formGroup: FormGroup = new FormGroup({
+  protected formGroup: FormGroup = new FormGroup<formGroupCarInfoModelType>({
     city: new FormControl(null, [Validators.required]),
-    model: new FormControl('', [Validators.required]),
-    gosNumber: new FormGroup({
-      number: new FormControl('', [Validators.required]),
-      region: new FormControl('', [Validators.required]),
-      country: new FormControl('', [Validators.required]),
+    model: new FormControl(null, [Validators.required]),
+    gosNumber: new FormGroup<formGroupGosNumberType>({
+      number: new FormControl(null, [Validators.required]),
+      region: new FormControl(null, [Validators.required]),
+      country: new FormControl(null, [Validators.required]),
     }),
-    vin: new FormControl('', [Validators.required]),
+    vin: new FormControl(null, [Validators.required]),
   });
 
   ngOnInit(): void {

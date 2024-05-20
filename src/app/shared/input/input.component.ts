@@ -1,4 +1,4 @@
-import {Component, EventEmitter, forwardRef, Input, OnDestroy, OnInit, Output} from '@angular/core';
+import {Component, forwardRef, Input, OnDestroy, OnInit, Output} from '@angular/core';
 import {ControlValueAccessor, FormControl, NG_VALUE_ACCESSOR} from '@angular/forms';
 import {Subject, takeUntil} from 'rxjs';
 
@@ -38,14 +38,12 @@ export class InputComponent<T> implements OnInit, OnDestroy, ControlValueAccesso
     }
   }
 
-  //передаёт данные на уровень выше к родителю
   registerOnChange(fn: any): void {
     this.onChangeCallback = fn;
   }
 
   registerOnTouched(fn: any): void {}
 
-  //если во внешнем контроле есть значение оно записывает его во внутренний контрол
   writeValue(obj: T): void {
     this.formControl.setValue(obj, {emitEvent: false});
   }
