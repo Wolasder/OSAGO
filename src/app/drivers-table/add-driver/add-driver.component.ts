@@ -5,9 +5,9 @@ import {KBM} from '../../kbm/kmb';
 import {FormControl, FormGroup, Validators} from '@angular/forms';
 import {Subject, takeUntil} from 'rxjs';
 
-type carGosNumberWithoutView = Omit<DriverModel, 'isNew' | 'coefficientAgeStage'>;
-type formGroupDriverModelType = {
-  [property in keyof carGosNumberWithoutView]: FormControl<carGosNumberWithoutView[property]>;
+export type DriverModelWithoutField = Omit<DriverModel, 'isNew' | 'coefficientAgeStage'>;
+type FormGroupDriverModelType = {
+  [property in keyof DriverModelWithoutField]: FormControl<DriverModelWithoutField[property]>;
 };
 
 @Component({
@@ -30,7 +30,7 @@ export class AddDriverComponent {
     }
   }
 
-  protected formGroup: FormGroup = new FormGroup<formGroupDriverModelType>({
+  protected formGroup: FormGroup<FormGroupDriverModelType> = new FormGroup<FormGroupDriverModelType>({
     fio: new FormControl(null, [Validators.required]),
     age: new FormControl(null, [Validators.required, Validators.min(16)]),
     stage: new FormControl(null, [Validators.required]),
@@ -48,7 +48,7 @@ export class AddDriverComponent {
 
   protected clickButtonAdd(): void {
     if (this.formGroup.valid) {
-      this.clickBtnAdd.emit(this.formGroup.getRawValue());
+      this.clickBtnAdd.emit(<DriverModel>this.formGroup.getRawValue());
       //очищает форму
       this.formGroup.reset(new DriverModel());
       //закрывает форму
@@ -62,5 +62,8 @@ export class AddDriverComponent {
   public ngOnDestroy(): void {
     this.unsubscribe$.next();
     this.unsubscribe$.complete();
+  }
+
+  constructor() {
   }
 }

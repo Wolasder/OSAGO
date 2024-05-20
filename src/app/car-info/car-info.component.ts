@@ -3,13 +3,13 @@ import {CarGosNumber, CarInfoModel} from '../shared/model/car-info.model';
 import {FormControl, FormGroup, Validators} from '@angular/forms';
 import {filter, Subject, takeUntil} from 'rxjs';
 
-type carInfoWithoutGosNum = Omit<CarInfoModel, 'gosNumber'>;
-type carGosNumberWithoutView = Omit<CarGosNumber, 'view'>;
-type formGroupGosNumberType = {
-  [property in keyof carGosNumberWithoutView]: FormControl<carGosNumberWithoutView[property]>;
+type CarInfoWithoutGosNum = Omit<CarInfoModel, 'gosNumber'>;
+type CarGosNumberWithoutView = Omit<CarGosNumber, 'view'>;
+type FormGroupGosNumberType = {
+  [property in keyof CarGosNumberWithoutView]: FormControl<CarGosNumberWithoutView[property]>;
 };
-type formGroupCarInfoModelType = {gosNumber: FormGroup<formGroupGosNumberType>} & {
-  [property in keyof carInfoWithoutGosNum]: FormControl<carInfoWithoutGosNum[property]>;
+type FormGroupCarInfoModelType = {gosNumber: FormGroup<FormGroupGosNumberType>} & {
+  [property in keyof CarInfoWithoutGosNum]: FormControl<CarInfoWithoutGosNum[property]>;
 };
 
 @Component({
@@ -24,10 +24,10 @@ export class CarInfoComponent implements OnInit, OnDestroy {
   protected titleCarInfo: string = 'Данные об автомобиле';
   private readonly unsubscribe$: Subject<void> = new Subject();
 
-  protected formGroup: FormGroup = new FormGroup<formGroupCarInfoModelType>({
+  protected formGroup: FormGroup<FormGroupCarInfoModelType> = new FormGroup<FormGroupCarInfoModelType>({
     city: new FormControl(null, [Validators.required]),
     model: new FormControl(null, [Validators.required]),
-    gosNumber: new FormGroup<formGroupGosNumberType>({
+    gosNumber: new FormGroup<FormGroupGosNumberType>({
       number: new FormControl(null, [Validators.required]),
       region: new FormControl(null, [Validators.required]),
       country: new FormControl(null, [Validators.required]),
@@ -41,7 +41,7 @@ export class CarInfoComponent implements OnInit, OnDestroy {
         filter(() => this.formGroup.valid),
         takeUntil(this.unsubscribe$),
       )
-      .subscribe(() => this.carInfoChange.emit(this.formGroup.getRawValue()));
+      .subscribe(() => this.carInfoChange.emit(<CarInfoModel>this.formGroup.getRawValue()));
   }
 
   public ngOnDestroy(): void {
