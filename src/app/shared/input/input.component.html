@@ -8,9 +8,12 @@
       autocomplete="off"
       name="ngModel"
       [ngStyle]="{width: width, 'margin-left': marginLeft}"
+      [ngClass]="{invalid: invalid}"
       [placeholder]="placeholder"
       [type]="type"
       [formControl]="formControl"
+      (blur)="onTouch()"
     />
+    <div *ngIf="showError" class="error-hint">Заполните поле</div>
   </div>
 </form>

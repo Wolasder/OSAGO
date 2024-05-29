@@ -21,8 +21,19 @@
     outline: none;
   }
 
+  &__inner.invalid.ng-touched {
+    border-color: $invalid;
+  }
+
   &__inner:focus {
     border-color: $color-input-border-focus;
     transition: all 0.3s ease-in-out;
+  }
+
+  .error-hint {
+    color: $invalid;
+    display: flex;
+    right: 60px;
+    justify-content: flex-start;
   }
 }

@@ -3,7 +3,7 @@ import {DriverModel} from '../../shared/model/driver.model';
 import {KbmModel} from '../../shared/model/kbm.model';
 import {KBM} from '../../kbm/kmb';
 import {FormControl, FormGroup, Validators} from '@angular/forms';
-import {Subject, takeUntil} from 'rxjs';
+import {Subject} from 'rxjs';
 
 export type DriverModelWithoutField = Omit<DriverModel, 'isNew' | 'coefficientAgeStage'>;
 type FormGroupDriverModelType = {
@@ -37,10 +37,6 @@ export class AddDriverComponent {
     kbm: new FormControl(null, [Validators.required]),
   });
 
-  ngOnInit(): void {
-    this.formGroup.valueChanges.pipe(takeUntil(this.unsubscribe$)).subscribe();
-  }
-
   //закрывает форму добавления
   protected clickButtonCancel(): void {
     this.clickBtnCancel.emit(false);
@@ -57,6 +53,7 @@ export class AddDriverComponent {
       alert('Всё заполни и возраст от 16ти лет');
     }
     this.driver.isNew = false;
+    console.log(this.formGroup);
   }
 
   public ngOnDestroy(): void {
@@ -64,6 +61,5 @@ export class AddDriverComponent {
     this.unsubscribe$.complete();
   }
 
-  constructor() {
-  }
+  constructor() {}
 }

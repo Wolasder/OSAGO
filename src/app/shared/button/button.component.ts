@@ -10,9 +10,5 @@ export class ButtonComponent {
   @Input() public padding: string = '';
   @Input() public disableBtn: boolean = false;
 
-  @Output() public clickBtn: EventEmitter<boolean> = new EventEmitter<boolean>();
-
-  protected clickButton(): void {
-    this.clickBtn.emit(true);
-  }
+  @Output() public clickBtn: EventEmitter<void> = new EventEmitter<void>();
 }

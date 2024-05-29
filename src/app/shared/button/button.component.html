@@ -1,5 +1,10 @@
 <div class="button-main">
-  <button class="button-main__inner" [disabled]="disableBtn" [ngStyle]="{padding: padding}" (click)="clickButton()">
+  <button
+    class="button-main__inner"
+    [disabled]="disableBtn"
+    [ngStyle]="{padding: padding}"
+    (click)="this.clickBtn.emit()"
+  >
     {{ text }}
   </button>
 </div>

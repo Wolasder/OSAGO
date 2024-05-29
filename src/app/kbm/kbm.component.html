@@ -1,4 +1,4 @@
-<app-title-h2 [titleTextForBlock]="titleKmb"></app-title-h2>
+<h2 class="title-block">Расчет стоимости ОСАГО</h2>
 <div class="kbm">
   <table *ngIf="!hiddenTable" class="kbm-table">
     <tr>
@@ -8,10 +8,10 @@
       <th class="kbm-table__head" style="width: 70px">Vin</th>
     </tr>
     <tr>
-      <td class="kbm-table__data">{{ combineInfo[0].carInfo.city.city }}</td>
+      <td class="kbm-table__data">{{ combineInfo[0].carInfo.city?.city }}</td>
       <td class="kbm-table__data">{{ combineInfo[0].carInfo.model }}</td>
       <td class="kbm-table__data">
-        {{ combineInfo[0].carInfo.gosNumber.view }}
+        {{ combineInfo[0].carInfo.gosNumber?.view }}
       </td>
       <td class="kbm-table__data">{{ combineInfo[0].carInfo.vin }}</td>
     </tr>
@@ -30,8 +30,8 @@
     </tr>
     <tr>
       <td class="kbm-table__data">Итоговая стоимость ОСАГО</td>
-      <td class="kbm-table__data">{{ finalPrise }} рублей</td>
+      <td class="kbm-table__data">{{ finalPrice }} рублей</td>
     </tr>
   </table>
-  <app-button text="Рассчитать" [disableBtn]="!combineInfo.length" (click)="GetPrice()"></app-button>
+  <app-button text="Рассчитать" (click)="GetPrice()"></app-button>
 </div>

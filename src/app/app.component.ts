@@ -13,8 +13,6 @@ export class AppComponent implements OnInit {
   protected combineDriversInfo: CombineDriverModel[] = [];
   protected driverInfo: DriverModel[] = [];
   protected carInfo: CarInfoModel = new CarInfoModel();
-  protected titleBlock: string = 'Добавить нового водителя';
-  protected titleMain: string = 'Калькулятор ОСАГО';
   protected currentIndexEditDriver: number | null = null;
   protected driverData: DriverModel | null = null;
   private bufferDriver: DriverModel = new DriverModel();
@@ -22,7 +20,7 @@ export class AppComponent implements OnInit {
   constructor(private localStorageService: LocalStorageService) {}
 
   public ngOnInit(): void {
-    this.driverInfo = this.localStorageService.getLocalStorage();
+    this.driverInfo = this.localStorageService.drivers;
   }
 
   protected toggleVisible(event: boolean = true): void {
@@ -42,7 +40,7 @@ export class AppComponent implements OnInit {
 
     this.driverData = new DriverModel();
 
-    this.localStorageService.setLocalStorage(this.driverInfo);
+    this.localStorageService.drivers = this.driverInfo;
 
     this.updatePersonInfo();
   }

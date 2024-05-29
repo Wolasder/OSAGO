@@ -1,10 +1,11 @@
 <div class="car-info">
-  <app-title-h2 [titleTextForBlock]="titleCarInfo"></app-title-h2>
+  <h1 class="title-main">Калькулятор ОСАГО</h1>
+  <h2 class="title-block">Данные об автомобиле</h2>
   <div class="car-info__inner">
     <div class="car-info__form" [formGroup]="formGroup">
       <div class="form__select-city">
         <p>Город регистрации</p>
-        <select class="select-city__options" name="city" formControlName="city">
+        <select class="select-city__options" name="city" [formControl]="formGroup.controls.city">
           <option [ngValue]="{city: 'Москва', value: '1.5'}">Москва</option>
           <option [ngValue]="{city: 'Санкт-Петербург', value: '1.5'}">Санкт-Петербург</option>
           <option [ngValue]="{city: 'Белгород', value: '1.1'}">Белгород</option>
@@ -12,22 +13,38 @@
         </select>
       </div>
       <div>
-        <app-input label="Марка" placeholder="Марка" type="text" formControlName="model"></app-input>
+        <app-input label="Марка" placeholder="Марка" type="text" [formControl]="formGroup.controls.model"></app-input>
       </div>
-      <div class="form__car-number" formGroupName="gosNumber">
-        <app-input
-          label="Гос номер"
-          marginLeft="130px"
-          placeholder="A 111 AA"
-          type="text"
-          width="66px"
-          formControlName="number"
-        ></app-input>
-        <app-input placeholder="31" type="text" width="30px" formControlName="region"></app-input>
-        <app-input placeholder="RUS" type="text" width="30px" formControlName="country"></app-input>
+      <div class="form__car-number" [formGroup]="formGroup.controls.gosNumber">
+        <div class="flex">
+          <app-input
+            label="Гос номер"
+            marginLeft="130px"
+            placeholder="A 111 AA"
+            type="text"
+            width="66px"
+            [visibleErrorHint]="false"
+            [formControl]="formGroup.controls.gosNumber.controls.number"
+          ></app-input>
+          <app-input
+            placeholder="31"
+            type="text"
+            width="30px"
+            [visibleErrorHint]="false"
+            [formControl]="formGroup.controls.gosNumber.controls.region"
+          ></app-input>
+          <app-input
+            placeholder="RUS"
+            type="text"
+            width="30px"
+            [visibleErrorHint]="false"
+            [formControl]="formGroup.controls.gosNumber.controls.country"
+          ></app-input>
+        </div>
+        <div *ngIf="showGroupGosNumError" class="error-hint">Заполните поле</div>
       </div>
       <div>
-        <app-input label="Vin" placeholder="vin" type="text" formControlName="vin"></app-input>
+        <app-input label="Vin" placeholder="vin" type="text" [formControl]="formGroup.controls.vin"></app-input>
       </div>
     </div>
   </div>

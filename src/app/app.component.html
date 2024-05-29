@@ -1,5 +1,3 @@
-<app-title-h1 [titleTextMain]="titleMain"></app-title-h1>
-
 <app-car-info (carInfoChange)="getCarInfo($event)"></app-car-info>
 
 <app-drivers-table
@@ -8,8 +6,7 @@
   (editableDriver)="driverChange($event)"
 ></app-drivers-table>
 
-<app-title-h2 [titleTextForBlock]="titleBlock"></app-title-h2>
-
+<h2 class="title-block">Добавить нового водителя</h2>
 <app-button [disableBtn]="!!driverData" (clickBtn)="toggleVisible()"></app-button>
 
 <app-add-driver

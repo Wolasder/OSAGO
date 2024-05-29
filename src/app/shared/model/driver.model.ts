@@ -1,9 +1,9 @@
 export class DriverModel {
-  public isNew: boolean;
-  public fio: string;
-  public age: string;
-  public stage: string;
-  public kbm: string;
+  public isNew: boolean | null;
+  public fio: string | null;
+  public age: string | null;
+  public stage: string | null;
+  public kbm: string | null;
   public coefficientAgeStage: number;
 
   constructor() {

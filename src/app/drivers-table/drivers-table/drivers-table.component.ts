@@ -1,5 +1,6 @@
 import {Component, EventEmitter, Input, Output} from '@angular/core';
 import {DriverModel} from '../../shared/model/driver.model';
+import {IEditableDriver} from '../../shared/interface/editable-driver.interface';
 
 @Component({
   selector: 'app-drivers-table',
@@ -9,16 +10,8 @@ import {DriverModel} from '../../shared/model/driver.model';
 export class DriversTableComponent {
   @Input() public driverData: DriverModel[] = [];
 
-  @Output() public editableDriver: EventEmitter<{
-    driver: DriverModel;
-    index: number;
-  }> = new EventEmitter<{
-    driver: DriverModel;
-    index: number;
-  }>();
+  @Output() public editableDriver: EventEmitter<IEditableDriver> = new EventEmitter<IEditableDriver>();
   @Output() public deleteDriverEvent: EventEmitter<void> = new EventEmitter<void>();
-
-  protected titleDriversTable: string = 'Таблица водителей';
 
   protected deleteDriver(index: number): void {
     this.driverData.splice(index, 1);

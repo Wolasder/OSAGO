@@ -21,7 +21,6 @@ export class CarInfoComponent implements OnInit, OnDestroy {
   @Output() public carInfoChange: EventEmitter<CarInfoModel> = new EventEmitter<CarInfoModel>();
 
   protected carInfo: CarInfoModel = new CarInfoModel();
-  protected titleCarInfo: string = 'Данные об автомобиле';
   private readonly unsubscribe$: Subject<void> = new Subject();
 
   protected formGroup: FormGroup<FormGroupCarInfoModelType> = new FormGroup<FormGroupCarInfoModelType>({
@@ -41,7 +40,15 @@ export class CarInfoComponent implements OnInit, OnDestroy {
         filter(() => this.formGroup.valid),
         takeUntil(this.unsubscribe$),
       )
-      .subscribe(() => this.carInfoChange.emit(<CarInfoModel>this.formGroup.getRawValue()));
+      .subscribe(() => {
+        this.carInfoChange.emit(<CarInfoModel>this.formGroup.getRawValue());
+      });
+  }
+
+  public get showGroupGosNumError(): boolean | null {
+    const {dirty, touched} = this.formGroup.controls.gosNumber;
+
+    return this.formGroup.controls.gosNumber.invalid ? dirty || touched : false;
   }
 
   public ngOnDestroy(): void {

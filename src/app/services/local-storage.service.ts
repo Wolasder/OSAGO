@@ -1,15 +1,17 @@
 import {Injectable} from '@angular/core';
 import {DriverModel} from '../shared/model/driver.model';
 
-export const KEY: string = 'key';
+export enum KeyEnum {
+  Drivers = 'drivers',
+}
 
 @Injectable()
 export class LocalStorageService {
-  public getLocalStorage(): DriverModel[] {
-    return JSON.parse(localStorage.getItem(KEY) ?? '[]');
+  public get drivers(): DriverModel[] {
+    return JSON.parse(localStorage.getItem(KeyEnum.Drivers) ?? '[]');
   }
 
-  public setLocalStorage(drivers: DriverModel[]): void {
-    localStorage.setItem(KEY, JSON.stringify(drivers));
+  public set drivers(drivers: DriverModel[]) {
+    localStorage.setItem(KeyEnum.Drivers, JSON.stringify(drivers));
   }
 }
