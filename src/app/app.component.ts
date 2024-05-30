@@ -1,15 +1,19 @@
-import {Component, OnInit} from '@angular/core';
+import {ChangeDetectionStrategy, ChangeDetectorRef, Component, OnInit, ViewChild} from '@angular/core';
 import {DriverModel} from './shared/model/driver.model';
 import {CarInfoModel} from './shared/model/car-info.model';
 import {CombineDriverModel} from './shared/model/combine-driver.model';
 import {LocalStorageService} from './services/local-storage.service';
+import {CarInfoComponent} from "./car-info/car-info.component";
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class AppComponent implements OnInit {
+  @ViewChild('carInfo', {static: true}) public carInfoComponent!: CarInfoComponent;
+
   protected combineDriversInfo: CombineDriverModel[] = [];
   protected driverInfo: DriverModel[] = [];
   protected carInfo: CarInfoModel = new CarInfoModel();
@@ -17,7 +21,10 @@ export class AppComponent implements OnInit {
   protected driverData: DriverModel | null = null;
   private bufferDriver: DriverModel = new DriverModel();
 
-  constructor(private localStorageService: LocalStorageService) {}
+  constructor(
+    private readonly localStorageService: LocalStorageService,
+    private readonly cdr: ChangeDetectorRef,
+  ) {}
 
   public ngOnInit(): void {
     this.driverInfo = this.localStorageService.drivers;
@@ -39,10 +46,11 @@ export class AppComponent implements OnInit {
     }
 
     this.driverData = new DriverModel();
-
     this.localStorageService.drivers = this.driverInfo;
+    this.driverInfo = [...this.driverInfo];
 
     this.updatePersonInfo();
+    this.cdr.markForCheck();
   }
 
   protected driverChange(event: {driver: DriverModel; index: number}): void {

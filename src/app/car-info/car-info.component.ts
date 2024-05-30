@@ -1,7 +1,16 @@
-import {Component, EventEmitter, OnDestroy, OnInit, Output} from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  ChangeDetectorRef,
+  Component,
+  EventEmitter,
+  OnDestroy,
+  OnInit,
+  Output
+} from '@angular/core';
 import {CarGosNumber, CarInfoModel} from '../shared/model/car-info.model';
 import {FormControl, FormGroup, Validators} from '@angular/forms';
 import {filter, Subject, takeUntil} from 'rxjs';
+import {markAllFormFieldsAsTouchedFunction} from "../shared/function/markAllFormFieldsAsTouched.function";
 
 type CarInfoWithoutGosNum = Omit<CarInfoModel, 'gosNumber'>;
 type CarGosNumberWithoutView = Omit<CarGosNumber, 'view'>;
@@ -16,6 +25,7 @@ type FormGroupCarInfoModelType = {gosNumber: FormGroup<FormGroupGosNumberType>} 
   selector: 'app-car-info',
   templateUrl: './car-info.component.html',
   styleUrls: ['./car-info.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class CarInfoComponent implements OnInit, OnDestroy {
   @Output() public carInfoChange: EventEmitter<CarInfoModel> = new EventEmitter<CarInfoModel>();
@@ -34,6 +44,10 @@ export class CarInfoComponent implements OnInit, OnDestroy {
     vin: new FormControl(null, [Validators.required]),
   });
 
+  constructor(
+    private readonly cdr: ChangeDetectorRef,
+  ) {}
+
   ngOnInit(): void {
     this.formGroup.valueChanges
       .pipe(
@@ -49,6 +63,11 @@ export class CarInfoComponent implements OnInit, OnDestroy {
     const {dirty, touched} = this.formGroup.controls.gosNumber;
 
     return this.formGroup.controls.gosNumber.invalid ? dirty || touched : false;
+  }
+
+  public markAllTouched(): void {
+    markAllFormFieldsAsTouchedFunction(this.formGroup)
+    this.cdr.markForCheck()
   }
 
   public ngOnDestroy(): void {

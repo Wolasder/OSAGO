@@ -31,17 +31,11 @@ export class KbmLogicService {
     });
 
     // выявление максимального коэффициента возраст-стаж и кмб для расчета при нескольких водителях (берется максимальный)
-    const maxCoefficientAgeStage: number = Number(
-      combineInfo.reduce((acc: CombineDriverModel, curr: CombineDriverModel) =>
-        acc.driver.coefficientAgeStage >= curr.driver.coefficientAgeStage ? acc : curr,
-      ).driver.coefficientAgeStage,
+    const maxCoefficientAgeStage: number = Math.max(
+      ...combineInfo.map((driver: CombineDriverModel) => Number(driver.driver.coefficientAgeStage)),
     );
 
-    const maxValueKbm: number = Number(
-      combineInfo.reduce((acc: CombineDriverModel, curr: CombineDriverModel) =>
-        Number(acc.driver.kbm) >= Number(curr.driver.kbm) ? acc : curr,
-      ).driver.kbm,
-    );
+    const maxValueKbm: number = Math.max(...combineInfo.map((driver: CombineDriverModel) => Number(driver.driver.kbm)));
 
     //коэффициент на количество водителей
     const coefficientNumOfDrivers: number = 1 + combineInfo.length / 10;

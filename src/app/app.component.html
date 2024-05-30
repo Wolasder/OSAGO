@@ -1,4 +1,4 @@
-<app-car-info (carInfoChange)="getCarInfo($event)"></app-car-info>
+<app-car-info #carInfo (carInfoChange)="getCarInfo($event)"></app-car-info>
 
 <app-drivers-table
   [driverData]="driverInfo"
@@ -16,4 +16,4 @@
   (clickBtnCancel)="toggleVisible(false)"
 ></app-add-driver>
 
-<app-kbm [combineInfo]="combineDriversInfo"></app-kbm>
+<app-kbm [combineInfo]="combineDriversInfo" (markAllTouched)="carInfoComponent.markAllTouched()" ></app-kbm>

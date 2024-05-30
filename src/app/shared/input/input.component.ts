@@ -1,11 +1,21 @@
-import {Component, Input, OnDestroy, OnInit, Optional, Self} from '@angular/core';
-import {ControlValueAccessor, FormControl, NgControl} from '@angular/forms';
+import {
+  ChangeDetectionStrategy,
+  ChangeDetectorRef,
+  Component,
+  Input,
+  OnDestroy,
+  OnInit,
+  Optional,
+  Self
+} from '@angular/core';
+import {AbstractControl, ControlValueAccessor, FormControl, NgControl} from '@angular/forms';
 import {distinctUntilChanged, Subject, takeUntil} from 'rxjs';
 
 @Component({
   selector: 'app-input',
   templateUrl: './input.component.html',
   styleUrls: ['./input.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class InputComponent<T> implements OnInit, OnDestroy, ControlValueAccessor {
   @Input() public type: string = '';
@@ -22,7 +32,7 @@ export class InputComponent<T> implements OnInit, OnDestroy, ControlValueAccesso
   private onTouchedCallBack!: () => {};
   private readonly unsubscribe$: Subject<void> = new Subject();
 
-  constructor(@Self() @Optional() public readonly control: NgControl) {
+  constructor(@Self() @Optional() public readonly control: NgControl, private readonly cdr: ChangeDetectorRef) {
     this.control.valueAccessor = this;
   }
 
@@ -30,6 +40,9 @@ export class InputComponent<T> implements OnInit, OnDestroy, ControlValueAccesso
     this.formControl.valueChanges.pipe(distinctUntilChanged(), takeUntil(this.unsubscribe$)).subscribe((value: T) => {
       this.onReactiveChange(value);
     });
+    if (this.control.control) {
+      this.control.control['markAsTouched'] = this.markAsTouched.bind(this)
+    }
   }
 
   public get invalid(): boolean | null {
@@ -68,6 +81,11 @@ export class InputComponent<T> implements OnInit, OnDestroy, ControlValueAccesso
 
   writeValue(obj: T): void {
     this.formControl.setValue(obj);
+  }
+
+  public markAsTouched(): void {
+    this.formControl.markAsTouched()
+    this.cdr.markForCheck()
   }
 
   public ngOnDestroy(): void {

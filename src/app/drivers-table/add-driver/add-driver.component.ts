@@ -1,4 +1,4 @@
-import {Component, EventEmitter, Input, Output} from '@angular/core';
+import {ChangeDetectionStrategy, Component, EventEmitter, Input, Output} from '@angular/core';
 import {DriverModel} from '../../shared/model/driver.model';
 import {KbmModel} from '../../shared/model/kbm.model';
 import {KBM} from '../../kbm/kmb';
@@ -14,6 +14,7 @@ type FormGroupDriverModelType = {
   selector: 'app-add-driver',
   templateUrl: './add-driver.component.html',
   styleUrls: ['./add-driver.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class AddDriverComponent {
   @Output() public clickBtnCancel: EventEmitter<boolean> = new EventEmitter<boolean>();
@@ -29,6 +30,8 @@ export class AddDriverComponent {
       this.formGroup.patchValue(driver);
     }
   }
+
+  constructor() {}
 
   protected formGroup: FormGroup<FormGroupDriverModelType> = new FormGroup<FormGroupDriverModelType>({
     fio: new FormControl(null, [Validators.required]),
@@ -53,13 +56,10 @@ export class AddDriverComponent {
       alert('Всё заполни и возраст от 16ти лет');
     }
     this.driver.isNew = false;
-    console.log(this.formGroup);
   }
 
   public ngOnDestroy(): void {
     this.unsubscribe$.next();
     this.unsubscribe$.complete();
   }
-
-  constructor() {}
 }
