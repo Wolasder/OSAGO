@@ -1,0 +1,15 @@
+import {ChangeDetectionStrategy, Component, EventEmitter, Input, Output} from '@angular/core';
+
+@Component({
+  selector: 'app-button',
+  templateUrl: './button.component.html',
+  styleUrls: ['./button.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush,
+})
+export class ButtonComponent {
+  @Input() public text: string = 'Добавить водителя';
+  @Input() public padding: string = '';
+  @Input() public disableBtn: boolean = false;
+
+  @Output() public clickBtn: EventEmitter<void> = new EventEmitter<void>();
+}

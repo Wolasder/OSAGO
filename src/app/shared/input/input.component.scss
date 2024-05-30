@@ -1,0 +1,39 @@
+@import 'src/environment.scss';
+
+.input-main {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin: 10px 5px;
+
+  &__inner {
+    width: 210px;
+    padding: 13px 15px 11px 15px;
+    font-family: $font-family-noto;
+    font-size: 14px;
+    line-height: 1.57143;
+    font-weight: 400;
+    font-style: normal;
+    color: $color-input;
+    border: 1px solid $color-input-border;
+    border-radius: 10px;
+    background: $color-input-background;
+    outline: none;
+  }
+
+  &__inner.invalid.ng-touched {
+    border-color: $invalid;
+  }
+
+  &__inner:focus {
+    border-color: $color-input-border-focus;
+    transition: all 0.3s ease-in-out;
+  }
+
+  .error-hint {
+    color: $invalid;
+    display: flex;
+    right: 60px;
+    justify-content: flex-start;
+  }
+}

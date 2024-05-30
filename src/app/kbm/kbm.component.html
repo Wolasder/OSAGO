@@ -1,0 +1,37 @@
+<h2 class="title-block">Расчет стоимости ОСАГО</h2>
+<div class="kbm">
+  <table *ngIf="!hiddenTable" class="kbm-table">
+    <tr>
+      <th class="kbm-table__head" style="width: 300px">Город регистрации</th>
+      <th class="kbm-table__head" style="width: 70px">Марка</th>
+      <th class="kbm-table__head" style="width: 70px">Гос номер</th>
+      <th class="kbm-table__head" style="width: 70px">Vin</th>
+    </tr>
+    <tr>
+      <td class="kbm-table__data">{{ combineInfo[0].carInfo.city?.city }}</td>
+      <td class="kbm-table__data">{{ combineInfo[0].carInfo.model }}</td>
+      <td class="kbm-table__data">
+        {{ combineInfo[0].carInfo.gosNumber?.view }}
+      </td>
+      <td class="kbm-table__data">{{ combineInfo[0].carInfo.vin }}</td>
+    </tr>
+
+    <tr>
+      <th class="kbm-table__head" style="width: 300px">Ф.И.О.</th>
+      <th class="kbm-table__head" style="width: 70px">Возраст водителя</th>
+      <th class="kbm-table__head" style="width: 70px">Стаж вождения</th>
+      <th class="kbm-table__head" style="width: 70px">КБМ</th>
+    </tr>
+    <tr *ngFor="let item of combineInfo">
+      <td class="kbm-table__data">{{ item.driver.fio }}</td>
+      <td class="kbm-table__data">{{ item.driver.age }}</td>
+      <td class="kbm-table__data">{{ item.driver.stage }}</td>
+      <td class="kbm-table__data">{{ item.driver.kbm }}</td>
+    </tr>
+    <tr>
+      <td class="kbm-table__data">Итоговая стоимость ОСАГО</td>
+      <td class="kbm-table__data">{{ finalPrice }} рублей</td>
+    </tr>
+  </table>
+  <app-button text="Рассчитать" (click)="GetPrice()"></app-button>
+</div>

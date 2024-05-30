@@ -1,0 +1,49 @@
+@import 'src/environment.scss';
+
+.add-driver {
+  background-color: $color-selected;
+}
+
+.add-driver__inner {
+  display: flex;
+  justify-content: center;
+}
+
+.car-info__form {
+  width: 450px;
+}
+
+.form__driver-info {
+  margin: 10px;
+}
+
+.form__buttons {
+  display: flex;
+  justify-content: center;
+  margin: 10px;
+  gap: 20px;
+}
+
+.form__select-kbm {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-left: 6px;
+}
+
+.select-kbm__options {
+  width: 242px;
+  height: 50px;
+  margin: 10px 16px;
+  padding: 13px 6px 11px 10px;
+  font-family: $font-family-noto;
+  font-size: 14px;
+  line-height: 1.57143;
+  font-weight: 400;
+  font-style: normal;
+  color: $color-input;
+  border: 1px solid $color-input-border;
+  border-radius: 10px;
+  background: $color-input-background;
+  outline: none;
+}

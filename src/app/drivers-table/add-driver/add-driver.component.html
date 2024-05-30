@@ -1,0 +1,43 @@
+<div class="add-driver">
+  <div class="add-driver__inner">
+    <form class="add-driver__form" [formGroup]="formGroup">
+      <div class="form__driver-info">
+        <app-input
+          inputName="name"
+          label="Ф.И.О."
+          placeholder="Ф.И.О."
+          type="text"
+          [formControl]="formGroup.controls.fio"
+        ></app-input>
+      </div>
+      <div class="form__driver-info">
+        <app-input
+          label="Возраст водителя"
+          placeholder="Возраст"
+          type="number"
+          [formControl]="formGroup.controls.age"
+        ></app-input>
+      </div>
+      <div class="form__driver-info">
+        <app-input
+          label="Стаж вождения"
+          placeholder="Стаж"
+          type="number"
+          [formControl]="formGroup.controls.stage"
+        ></app-input>
+      </div>
+      <div class="form__select-kbm">
+        <p>Сколько лет не было аварий?</p>
+        <select class="select-kbm__options" name="kbm" [formControl]="formGroup.controls.kbm">
+          <option *ngFor="let item of kbm" [value]="item.value">
+            {{ item.description }}
+          </option>
+        </select>
+      </div>
+      <div class="form__buttons">
+        <app-button text="{{ driver.isNew ? 'Добавить' : 'Сохранить' }}" (click)="clickButtonAdd()"></app-button>
+        <app-button text="Отменить" (click)="clickButtonCancel()"></app-button>
+      </div>
+    </form>
+  </div>
+</div>

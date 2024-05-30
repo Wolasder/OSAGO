@@ -1,0 +1,19 @@
+<form class="input-main">
+  <div>
+    <label [textContent]="label"></label>
+  </div>
+  <div>
+    <input
+      class="input-main__inner"
+      autocomplete="off"
+      name="ngModel"
+      [ngStyle]="{width: width, 'margin-left': marginLeft}"
+      [ngClass]="{invalid: invalid}"
+      [placeholder]="placeholder"
+      [type]="type"
+      [formControl]="formControl"
+      (blur)="onTouch()"
+    />
+    <div *ngIf="showError" class="error-hint">Заполните поле</div>
+  </div>
+</form>
